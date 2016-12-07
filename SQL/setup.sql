@@ -5,4 +5,5 @@ Create table tasks
 Create table workgroup_users
 Create table intervals
 Create table task_intervals
+Create table task_options
 COMMIT;
