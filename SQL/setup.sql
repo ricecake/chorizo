@@ -1,11 +1,62 @@
+    CREATE USER chorizo PASSWORD 'EXAMPLE#!';
+    CREATE DATABASE chorizo;
+
+\connect chorizo
 BEGIN;
-Create table users ();
-CREATE TABLE workgroup ();
-Create table tasks ();
-Create table workgroup_users ();
-Create table intervals ();
-Create table task_intervals ();
-Create table task_options ();
-Create table task_occurence ();
-Create table task_claim ();
+    CREATE EXTENSION "uuid-ossp";
+    CREATE EXTENSION "citext";
+
+    CREATE TABLE users (
+        id SERIAL PRIMARY KEY
+    );
+    GRANT SELECT, UPDATE, INSERT ON TABLE users TO chorizo;
+    GRANT USAGE, SELECT ON SEQUENCE users_id_seq TO chorizo;
+
+    CREATE TABLE workgroup (
+        id SERIAL PRIMARY KEY
+    );
+    GRANT SELECT, UPDATE, INSERT ON TABLE workgroup TO chorizo;
+    GRANT USAGE, SELECT ON SEQUENCE workgroup_id_seq TO chorizo;
+
+    CREATE TABLE tasks (
+        id SERIAL PRIMARY KEY
+    );
+    GRANT SELECT, UPDATE, INSERT ON TABLE tasks TO chorizo;
+    GRANT USAGE, SELECT ON SEQUENCE tasks_id_seq TO chorizo;
+
+    CREATE TABLE workgroup_users (
+        id SERIAL PRIMARY KEY
+    );
+    GRANT SELECT, UPDATE, INSERT ON TABLE workgroup_users TO chorizo;
+    GRANT USAGE, SELECT ON SEQUENCE workgroup_users_id_seq TO chorizo;
+
+    CREATE TABLE intervals (
+        id SERIAL PRIMARY KEY
+    );
+    GRANT SELECT, UPDATE, INSERT ON TABLE intervals TO chorizo;
+    GRANT USAGE, SELECT ON SEQUENCE intervals_id_seq TO chorizo;
+
+    CREATE TABLE task_intervals (
+        id SERIAL PRIMARY KEY
+    );
+    GRANT SELECT, UPDATE, INSERT ON TABLE task_intervals TO chorizo;
+    GRANT USAGE, SELECT ON SEQUENCE task_intervals_id_seq TO chorizo;
+
+    CREATE TABLE task_options (
+        id SERIAL PRIMARY KEY
+    );
+    GRANT SELECT, UPDATE, INSERT ON TABLE task_options TO chorizo;
+    GRANT USAGE, SELECT ON SEQUENCE task_options_id_seq TO chorizo;
+
+    CREATE TABLE task_occurence (
+        id SERIAL PRIMARY KEY
+    );
+    GRANT SELECT, UPDATE, INSERT ON TABLE task_occurence TO chorizo;
+    GRANT USAGE, SELECT ON SEQUENCE task_occurence_id_seq TO chorizo;
+
+    CREATE TABLE task_claim (
+        id SERIAL PRIMARY KEY
+    );
+    GRANT SELECT, UPDATE, INSERT ON TABLE task_claim TO chorizo;
+    GRANT USAGE, SELECT ON SEQUENCE task_claim_id_seq TO chorizo;
 COMMIT;
