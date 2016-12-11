@@ -7,7 +7,10 @@ BEGIN;
     CREATE EXTENSION "citext";
 
     CREATE TABLE users (
-        id SERIAL PRIMARY KEY
+        id SERIAL PRIMARY KEY,
+        name TEXT NOT NULL,
+        username CITEXT NOT NULL,
+        email CITEXT NOT NULL
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE users TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE users_id_seq TO chorizo;
