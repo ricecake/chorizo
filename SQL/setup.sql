@@ -16,7 +16,8 @@ BEGIN;
     GRANT USAGE, SELECT ON SEQUENCE users_id_seq TO chorizo;
 
     CREATE TABLE workgroup (
-        id SERIAL PRIMARY KEY
+        id SERIAL PRIMARY KEY,
+        name CITEXT NOT NULL
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE workgroup TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE workgroup_id_seq TO chorizo;
