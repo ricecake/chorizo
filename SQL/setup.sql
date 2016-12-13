@@ -10,20 +10,24 @@ BEGIN;
         id SERIAL PRIMARY KEY,
         name TEXT NOT NULL,
         username CITEXT NOT NULL,
-        email CITEXT NOT NULL
+        email CITEXT NOT NULL,
+        uuid CITEXT NOT NULL DEFAULT uuid_generate_v4()
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE users TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE users_id_seq TO chorizo;
 
     CREATE TABLE workgroup (
         id SERIAL PRIMARY KEY,
-        name CITEXT NOT NULL
+        name CITEXT NOT NULL,
+        uuid CITEXT NOT NULL DEFAULT uuid_generate_v4()
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE workgroup TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE workgroup_id_seq TO chorizo;
 
     CREATE TABLE tasks (
-        id SERIAL PRIMARY KEY
+        id SERIAL PRIMARY KEY,
+        name CITEXT NOT NULL,
+        uuid CITEXT NOT NULL DEFAULT uuid_generate_v4()
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE tasks TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE tasks_id_seq TO chorizo;
