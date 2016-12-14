@@ -51,7 +51,9 @@ BEGIN;
     GRANT USAGE, SELECT ON SEQUENCE task_intervals_id_seq TO chorizo;
 
     CREATE TABLE task_options (
-        id SERIAL PRIMARY KEY
+        id SERIAL PRIMARY KEY,
+        key TEXT NOT NULL,
+        value TEXT NOT NULL
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE task_options TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE task_options_id_seq TO chorizo;
