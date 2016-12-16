@@ -64,7 +64,8 @@ BEGIN;
 
     CREATE TABLE task_occurence (
         id SERIAL PRIMARY KEY,
-        task INTEGER REFERENCES task(id)
+        task INTEGER REFERENCES task(id),
+        uuid CITEXT NOT NULL DEFAULT uuid_generate_v4()
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE task_occurence TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE task_occurence_id_seq TO chorizo;
