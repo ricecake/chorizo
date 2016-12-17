@@ -48,7 +48,8 @@ BEGIN;
     GRANT USAGE, SELECT ON SEQUENCE intervals_id_seq TO chorizo;
 
     CREATE TABLE task_intervals (
-        id SERIAL PRIMARY KEY
+        id SERIAL PRIMARY KEY,
+        interval INTEGER REFERENCES intervals(id)
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE task_intervals TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE task_intervals_id_seq TO chorizo;
