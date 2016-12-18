@@ -26,7 +26,7 @@ BEGIN;
 
     CREATE TABLE tasks (
         id SERIAL PRIMARY KEY,
-        workgroup INTEGER REFERENCES workgroup(id),
+        workgroup INTEGER NOT NULL REFERENCES workgroup(id),
         name CITEXT NOT NULL,
         uuid CITEXT NOT NULL DEFAULT uuid_generate_v4()
     );
@@ -35,16 +35,16 @@ BEGIN;
 
     CREATE TABLE workgroup_users (
         id SERIAL PRIMARY KEY,
-        workgroup INTEGER REFERENCES workgroup(id),
-        member INTEGER REFERENCES users(id)
+        workgroup INTEGER NOT NULL REFERENCES workgroup(id),
+        member INTEGER NOT NULL REFERENCES users(id)
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE workgroup_users TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE workgroup_users_id_seq TO chorizo;
 
     CREATE TABLE intervals (
         id SERIAL PRIMARY KEY
-        quantity INTEGER,
-        unit CITEXT
+        quantity INTEGER NOT NULL,
+        unit CITEXT NOT NULL
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE intervals TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE intervals_id_seq TO chorizo;
@@ -59,7 +59,7 @@ BEGIN;
 
     CREATE TABLE task_options (
         id SERIAL PRIMARY KEY,
-        task INTEGER REFERENCES task(id),
+        task INTEGER NOT NULL REFERENCES task(id),
         key TEXT NOT NULL,
         value TEXT NOT NULL
     );
