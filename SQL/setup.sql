@@ -51,8 +51,8 @@ BEGIN;
 
     CREATE TABLE task_intervals (
         id SERIAL PRIMARY KEY,
-        interval INTEGER REFERENCES intervals(id),
-        task INTEGER REFERENCES tasks(id)
+        interval INTEGER NOT NULL REFERENCES intervals(id),
+        task INTEGER NOT NULL REFERENCES tasks(id)
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE task_intervals TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE task_intervals_id_seq TO chorizo;
@@ -68,7 +68,7 @@ BEGIN;
 
     CREATE TABLE task_occurence (
         id SERIAL PRIMARY KEY,
-        task INTEGER REFERENCES task(id),
+        task INTEGER NOT NULL REFERENCES task(id),
         uuid CITEXT NOT NULL DEFAULT uuid_generate_v4()
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE task_occurence TO chorizo;
@@ -76,8 +76,8 @@ BEGIN;
 
     CREATE TABLE task_claim (
         id SERIAL PRIMARY KEY,
-        task INTEGER REFERENCES task_occurence(id),
-        claiment INTEGER REFERENCES users(id)
+        task INTEGER NOT NULL REFERENCES task_occurence(id),
+        claiment INTEGER NOT NULL REFERENCES users(id)
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE task_claim TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE task_claim_id_seq TO chorizo;
