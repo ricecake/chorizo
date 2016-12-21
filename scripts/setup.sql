@@ -77,7 +77,8 @@ BEGIN;
     CREATE TABLE task_claim (
         id SERIAL PRIMARY KEY,
         task INTEGER NOT NULL REFERENCES task_occurence(id),
-        claiment INTEGER NOT NULL REFERENCES users(id)
+        claiment INTEGER NOT NULL REFERENCES users(id),
+        claimed TIMESTAMP WITH TIMEZONE NOT NULL DEFAULT NOW()
     );
     GRANT SELECT, UPDATE, INSERT ON TABLE task_claim TO chorizo;
     GRANT USAGE, SELECT ON SEQUENCE task_claim_id_seq TO chorizo;
