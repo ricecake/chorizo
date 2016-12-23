@@ -1,6 +1,6 @@
     CREATE USER chorizo PASSWORD 'EXAMPLE#!';
     CREATE DATABASE chorizo;
-
+    CREATE TYPE timeunit AS ENUM ('minute', 'hour', 'day', 'week', 'month', 'quarter', 'year');
 \connect chorizo
 BEGIN;
     CREATE EXTENSION "uuid-ossp";
