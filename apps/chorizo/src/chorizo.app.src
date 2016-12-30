@@ -1,5 +1,5 @@
 {application, chorizo,
- [{description, "An OTP application"},
+ [{description, "Chorizo core data handler"},
   {vsn, "0.1.0"},
   {registered, []},
   {mod, { chorizo_app, []}},
