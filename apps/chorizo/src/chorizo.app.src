@@ -5,7 +5,9 @@
   {mod, { chorizo_app, []}},
   {applications,
    [kernel,
-    stdlib
+    stdlib,
+    pgapp,
+    sqerl
    ]},
   {env,[]},
   {modules, []},

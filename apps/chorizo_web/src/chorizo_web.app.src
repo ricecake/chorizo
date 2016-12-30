@@ -5,7 +5,10 @@
   {mod, { chorizo_web_app, []}},
   {applications,
    [kernel,
-    stdlib
+    stdlib,
+    jsx,
+    cowboy,
+    erlydtl
    ]},
   {env,[]},
   {modules, []},
